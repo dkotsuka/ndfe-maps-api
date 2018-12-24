@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/ndfe-maps-api/precache-manifest.28f3f894f671dd0560381e39e7de665c.js"
+  "/ndfe-maps-api/precache-manifest.2155b9c073f66d29d06c0bfd9f9313f7.js"
 );
 
 workbox.clientsClaim();
