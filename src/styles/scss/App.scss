@@ -1,13 +1,38 @@
-html {
-    height: 100%;
-}
-
+html, 
 body, 
 .App, 
-#root {
+#root,
+.map-container {
     height: 100%;
 }
 
-#map {
-    height: 100%;
+.side-list {
+    width: 320px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    overflow-y: scroll;
+    z-index: 10000;
+    background-color: rgba(255,255,255,0.8);
+}
+
+//=== custom scrollbar ===
+
+::-webkit-scrollbar{
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.8);
+  border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa; 
 }
