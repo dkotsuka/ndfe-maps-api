@@ -25,11 +25,6 @@ const MapContainer = compose(
         if (window.innerWidth >= 769){
         	refs.map.panBy(-160,0)
         }
-      },
-      onMarkerClustererClick: () => (markerClusterer) => {
-        const clickedMarkers = markerClusterer.getMarkers()
-        console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-        console.log(clickedMarkers)
       }
     }
   }),
@@ -41,7 +36,7 @@ const MapContainer = compose(
       defaultCenter={props.center}
       zoom={16}
       ref={props.onMapMounted}
-      defaultOptions={{ styles: myStyles }}
+      defaultOptions={{ styles: myStyles, streetViewControl: false }}
     >
     	{props.list.map((item,index) => 
         {

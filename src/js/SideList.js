@@ -1,5 +1,6 @@
 import React from 'react'
 import ListItem from './ListItem'
+import fetchPlace from './YelpAPI'
 
 function SideList(props) {
 	const list = props.list;
@@ -20,7 +21,7 @@ function SideList(props) {
 			</ul>
 		</div>
 	):(
-		<PlaceDetails selected={props.selected} onBackToList={props.onBackToList}/>
+		<PlaceDetails item={props.selected} onBackToList={props.onBackToList}/>
 	)
 	
 }
@@ -50,8 +51,9 @@ function PlaceDetails(props) {
 		<div className='side-container'>
 			<div>
 				<button onClick={() => props.onBackToList()}>Voltar</button>
+				{fetchPlace(props.item.position)}
 			</div>
-			<h2>{props.selected.name}</h2>
+			<h2>{props.item.name}</h2>
 		</div>
 	)
 }

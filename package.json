@@ -10,9 +10,10 @@
     "react-async-script-loader": "^0.3.0",
     "react-dom": "^16.7.0",
     "react-google-maps": "^9.4.5",
-    "react-scripts": "2.1.1",
+    "react-scripts": "^2.1.2",
     "recompose": "^0.30.0",
-    "sass": "^1.15.2"
+    "sass": "^1.15.2",
+    "yelp-fusion": "^2.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

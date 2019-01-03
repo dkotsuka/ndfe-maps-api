@@ -16,7 +16,10 @@ class App extends Component {
 
 	handlePlaceSelection = (index) => {
 		const selected = this.state.showList[index]
-		this.setState({selected: selected})
+		this.setState({
+			showList: [selected], 
+			selected: selected
+		})
 	}
 
 	filterByCuisine = (cuisine) => {
