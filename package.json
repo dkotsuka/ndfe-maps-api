@@ -6,11 +6,14 @@
   "dependencies": {
     "gh-pages": "^2.0.1",
     "google-maps-react": "^2.0.2",
+    "google-places-browser": "^1.0.0",
+    "google-places-web": "^0.1.10",
+    "googleplaces": "^0.6.1",
     "react": "^16.7.0",
     "react-async-script-loader": "^0.3.0",
     "react-dom": "^16.7.0",
     "react-google-maps": "^9.4.5",
-    "react-scripts": "^2.1.2",
+    "react-scripts": "^2.1.3",
     "recompose": "^0.30.0",
     "sass": "^1.15.2",
     "yelp-fusion": "^2.2.1"

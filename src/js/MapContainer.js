@@ -1,6 +1,6 @@
 /*global google*/
 import React from 'react'
-import { compose, withProps, withHandlers} from 'recompose'
+import { compose, withProps} from 'recompose'
 import {markerIcon} from './data'
 import mapStyles from './mapStyles'
 const { withScriptjs, withGoogleMap, GoogleMap, Marker } = require("react-google-maps");
@@ -14,28 +14,14 @@ const MapContainer = compose(
     containerElement: <div style={{ height: `100%` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
-  withHandlers(() => {
-    const refs = {
-      map: undefined,
-    }
-    return {
-      onMapMounted: () => ref => {
-        refs.map = ref
-        
-        if (window.innerWidth >= 769){
-        	refs.map.panBy(-160,0)
-        }
-      }
-    }
-  }),
   withScriptjs,
   withGoogleMap
 )(props => 
   {
     return <GoogleMap
-      defaultCenter={props.center}
+      center={props.center}
       zoom={16}
-      ref={props.onMapMounted}
+      ref={props.onMapMounted()}
       defaultOptions={{ styles: myStyles, streetViewControl: false }}
     >
     	{props.list.map((item,index) => 
@@ -46,7 +32,9 @@ const MapContainer = compose(
               key={item.id}
               options={{icon: {url: markerIcon[item.code], 
                 scaledSize: {width: 48, height: 48}}}}
-              onClick={() => props.onMarkerClick(index)}
+              onClick={() => {
+                props.placeSelection(index)
+              }}
               title={item.title}
       		/>
         })}
@@ -54,13 +42,4 @@ const MapContainer = compose(
   }
 );
 
-class MapComponent extends React.Component{
-  render(){
-    return <MapContainer 
-            list={this.props.list} 
-            center={this.props.center}
-            onMarkerClick={this.props.onMarkerClick}/>
-  }
-}
-
-export default MapComponent
+export default MapContainer

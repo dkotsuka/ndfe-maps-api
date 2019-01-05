@@ -1,6 +1,7 @@
+/*global google*/
 import React, { Component } from 'react';
 import './styles/css/App.css';
-import MapComponent from './js/MapContainer'
+import MapContainer from './js/MapContainer'
 import SideList from './js/SideList'
 import list, {getCenter} from './js/data'
 
@@ -10,8 +11,11 @@ class App extends Component {
 		this.state = {
 			showList: list,
 			filteredBy: 'all',
-			selected: undefined
+			selected: undefined,
+			mapCenter: getCenter,
+			firstLoad: true
 		}
+		this.map = undefined
 	}
 
 	handlePlaceSelection = (index) => {
@@ -20,6 +24,7 @@ class App extends Component {
 			showList: [selected], 
 			selected: selected
 		})
+		this.setMapCenter(selected.position)
 	}
 
 	filterByCuisine = (cuisine) => {
@@ -36,9 +41,25 @@ class App extends Component {
 		this.setState({
 			showList: list,
 			filteredBy: 'all',
-			selected: undefined
+			selected: undefined,
 		})
+		this.setMapCenter(getCenter)
 	}
+
+	onMapMounted = () => ref => {
+		if(this.state.firstLoad){
+			this.map = ref
+			this.setState({firstLoad: false})			
+		}
+		this.setMapCenter(getCenter)
+  }
+
+  setMapCenter = (position) => {
+		this.map.panTo(position)
+		if (window.innerWidth >= 769){
+      this.map.panBy(-160,0)
+    }
+  }
 
 	render() {
 		return (
@@ -48,7 +69,7 @@ class App extends Component {
 				</header>
 				<div className='main'>
 
-				<SideList list={list} 
+				<SideList list={list}
 					shownList={this.state.showList} 
 					filter={this.state.filteredBy}
 					selected={this.state.selected}
@@ -56,12 +77,15 @@ class App extends Component {
 					onBackToList={this.showListAgain}
 					onItemClick={this.handlePlaceSelection}/>
 
-				<MapComponent list={this.state.showList} 
-					center={getCenter} 
-					onMarkerClick={this.handlePlaceSelection}/>
+				<MapContainer list={this.state.showList} 
+					center={this.state.mapCenter} 
+					placeSelection={this.handlePlaceSelection}
+					onMapMounted = {this.onMapMounted}/>
 				</div>
 			</div>
 		);
 	}
 }
+
+//<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 export default App;

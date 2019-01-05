@@ -20,7 +20,8 @@ export default function ListItem(props) {
 			style={{backgroundImage : `url(${props.item.img})`}}>
 			<img src={flag[props.item.code]} alt='cuisine type'/>
 			<h2>{props.item.name}</h2>
-			<button onClick={() => props.onItemClick(props.index)}>
+			<button onClick={() => props.onItemClick(props.index)}
+				tabIndex="0">
 				<span>Check it!</span>
 			</button>
 		</li>

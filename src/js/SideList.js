@@ -1,29 +1,34 @@
 import React from 'react'
 import ListItem from './ListItem'
-import fetchPlace from './YelpAPI'
+import PlaceDetails from './PlaceDetails'
+
 
 function SideList(props) {
 	const list = props.list;
 	const shownList = props.shownList;
-	return	!props.selected ? (
-		<div className='side-container'>
+	const isListView = !props.selected;
 
-			<CuisineSelector list={list}
-				onSelectCuisine={props.onSelectCuisine}
-				selectValue={props.filter}/>
-			<ul>
-				{shownList.map((item,index) => (
-					<ListItem item={item} 
-						key={item.id}
-						index={index}
-						onItemClick={props.onItemClick}/>
-				))}
-			</ul>
+	return (
+		<div className={`side-container ${isListView ? 'list-view' : 'details'}`}>
+			{
+				isListView ? (
+					<div>
+						<CuisineSelector list={list}
+							onSelectCuisine={props.onSelectCuisine}
+							selectValue={props.filter}/>
+						<ul>
+							{shownList.map((item,index) => (
+								<ListItem item={item} 
+									key={item.id}
+									index={index}
+									onItemClick={props.onItemClick}/>
+							))}
+						</ul>
+					</div>
+				) : (<PlaceDetails item={props.selected} onBackToList={props.onBackToList}/>)
+			}
 		</div>
-	):(
-		<PlaceDetails item={props.selected} onBackToList={props.onBackToList}/>
-	)
-	
+	)	
 }
 
 function CuisineSelector(props) {
@@ -44,18 +49,6 @@ function CuisineSelector(props) {
 				</select>
 			</div>
 		)
-}
-
-function PlaceDetails(props) {
-	return (
-		<div className='side-container'>
-			<div>
-				<button onClick={() => props.onBackToList()}>Voltar</button>
-				{fetchPlace(props.item.position)}
-			</div>
-			<h2>{props.item.name}</h2>
-		</div>
-	)
 }
 
 export default SideList

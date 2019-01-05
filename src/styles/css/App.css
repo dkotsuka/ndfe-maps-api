@@ -30,7 +30,6 @@ header h1 span {
 }
 
 .side-container {
-  width: 320px;
   position: fixed;
   padding-top: 50px;
   top: 0;
@@ -39,13 +38,20 @@ header h1 span {
   overflow-y: scroll;
   z-index: 10000;
   background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+}
+
+.side-container.list-view {
+  width: 320px;
+}
+
+.side-container.details {
+  width: 400px;
 }
 
 .filter-container {
   background-color: rgba(100, 0, 0, 0.8);
-  margin: 10px;
-  padding: 5px;
-  border-radius: 10px;
+  padding: 10px 15px;
   display: flex;
   flex-direction: column;
 }
@@ -54,13 +60,13 @@ header h1 span {
   color: #eee;
 }
 .filter-container select {
-  height: 48px;
-  line-height: 48px;
+  height: 36px;
+  line-height: 36px;
   padding-left: 5px;
   font-size: 16px;
   text-transform: capitalize;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #eeeeee;
 }
 
@@ -120,6 +126,95 @@ ul .list-item-container button:hover {
 }
 ul .list-item-container button:hover span {
   color: white;
+}
+
+.details-container .details-header {
+  display: flex;
+  height: 48px;
+  background-color: #640000;
+}
+.details-container .details-header button {
+  width: 48px;
+  background-color: #500000;
+  border: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+.details-container .details-header button span {
+  display: none;
+}
+.details-container .details-header button:hover {
+  background-color: #785000;
+}
+.details-container .details-header h2 {
+  line-height: 48px;
+  color: white;
+  margin: 0;
+  padding-left: 15px;
+}
+.details-container .place-details {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-bottom: 15px;
+  font-size: 14px;
+}
+.details-container .place-details .image-container {
+  height: 240px;
+  margin: 0;
+  margin-bottom: 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.details-container .place-details p {
+  color: white;
+  margin: 0 15px;
+}
+.details-container .place-details p a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.reviews-container .rating-container {
+  margin: 10px;
+  padding: 10px 15px;
+  background-color: #222;
+  border-radius: 5px;
+}
+.reviews-container .rating-container h2 {
+  color: #999;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 5px 0 10px 0;
+  border-bottom: 1px solid #555;
+}
+.reviews-container .rating-container .star-rating {
+  height: 32px;
+  width: 160px;
+  background-size: cover;
+}
+.reviews-container .rating-container h3 {
+  float: right;
+  line-height: 24px;
+  font-size: 24px;
+  margin: 0;
+  margin-top: -30px;
+}
+.reviews-container .rating-container p {
+  margin: 0;
+  color: #eee;
+  font-weight: bold;
+}
+.reviews-container .rating-container p small {
+  color: #ccc;
+  font-weight: normal;
+}
+.reviews-container .rating-container p a {
+  text-decoration: none;
+  text-align: right;
+  color: #ccc;
+  display: block;
+  font-weight: normal;
 }
 
 ::-webkit-scrollbar {
