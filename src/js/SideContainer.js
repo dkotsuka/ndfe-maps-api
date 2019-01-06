@@ -3,7 +3,7 @@ import ListItem from './ListItem'
 import PlaceDetails from './PlaceDetails'
 
 
-function SideList(props) {
+function SideContainer(props) {
 	const list = props.list;
 	const shownList = props.shownList;
 	const isListView = !props.selected;
@@ -25,7 +25,7 @@ function SideList(props) {
 							))}
 						</ul>
 					</div>
-				) : (<PlaceDetails item={props.selected} onBackToList={props.onBackToList}/>)
+				) : (<PlaceDetails map={props.map} item={props.selected} onBackToList={props.onBackToList}/>)
 			}
 		</div>
 	)	
@@ -51,4 +51,4 @@ function CuisineSelector(props) {
 		)
 }
 
-export default SideList
+export default SideContainer

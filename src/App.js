@@ -1,8 +1,7 @@
-/*global google*/
 import React, { Component } from 'react';
 import './styles/css/App.css';
 import MapContainer from './js/MapContainer'
-import SideList from './js/SideList'
+import SideContainer from './js/SideContainer'
 import list, {getCenter} from './js/data'
 
 class App extends Component {
@@ -12,7 +11,6 @@ class App extends Component {
 			showList: list,
 			filteredBy: 'all',
 			selected: undefined,
-			mapCenter: getCenter,
 			firstLoad: true
 		}
 		this.map = undefined
@@ -49,7 +47,7 @@ class App extends Component {
 	onMapMounted = () => ref => {
 		if(this.state.firstLoad){
 			this.map = ref
-			this.setState({firstLoad: false})			
+			this.setState({firstLoad: false})
 		}
 		this.setMapCenter(getCenter)
   }
@@ -67,9 +65,16 @@ class App extends Component {
 				<header className='title'>
 					<h1><span>the Tastes</span> of Liberdade</h1>
 				</header>
+
 				<div className='main'>
 
-				<SideList list={list}
+					<MapContainer list={this.state.showList} 
+						center={getCenter} 
+						placeSelection={this.handlePlaceSelection}
+						onMapMounted = {this.onMapMounted}/>
+
+					<SideContainer list={list}
+					map={this.map}
 					shownList={this.state.showList} 
 					filter={this.state.filteredBy}
 					selected={this.state.selected}
@@ -77,15 +82,22 @@ class App extends Component {
 					onBackToList={this.showListAgain}
 					onItemClick={this.handlePlaceSelection}/>
 
-				<MapContainer list={this.state.showList} 
-					center={this.state.mapCenter} 
-					placeSelection={this.handlePlaceSelection}
-					onMapMounted = {this.onMapMounted}/>
+					<Attribution />
 				</div>
 			</div>
 		);
 	}
 }
 
-//<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+function Attribution(props) {
+	return <div className='attribution-container'>
+		<p>Icons made by 
+			<a href="https://www.freepik.com/" title="Freepik"> Freepik </a>
+			from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com </a>
+			are licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>
+		</p>
+	</div>
+}
+
+//
 export default App;

@@ -1,10 +1,29 @@
 html,
 body,
 .App,
-.main,
-#root,
-.map-container {
+#root {
   height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  height: 100%;
+}
+@media screen and (max-width: 768px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+  }
+}
+.main .map-container {
+  height: 100%;
+}
+@media screen and (max-width: 768px) {
+  .main .map-container {
+    height: 400px;
+  }
 }
 
 header {
@@ -12,6 +31,14 @@ header {
   left: 0;
   top: 0;
   z-index: 20000;
+}
+@media screen and (max-width: 768px) {
+  header {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+  }
 }
 header h1 {
   height: 50px;
@@ -21,8 +48,16 @@ header h1 {
   margin: 0;
   padding-left: 15px;
   border-bottom-right-radius: 50px;
-  width: 500px;
+  width: 450px;
   color: white;
+}
+@media screen and (max-width: 768px) {
+  header h1 {
+    width: 100%;
+    border-radius: 0;
+    text-align: center;
+    padding-left: 0;
+  }
 }
 header h1 span {
   font-family: "Kristi", cursive;
@@ -40,13 +75,33 @@ header h1 span {
   background-color: rgba(0, 0, 0, 0.5);
   transition: 0.5s;
 }
+@media screen and (max-width: 768px) {
+  .side-container {
+    position: relative;
+    overflow-y: visible;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    padding-top: 0;
+  }
+}
 
 .side-container.list-view {
   width: 320px;
 }
+@media screen and (max-width: 768px) {
+  .side-container.list-view {
+    width: 100%;
+  }
+}
 
 .side-container.details {
   width: 400px;
+}
+@media screen and (max-width: 768px) {
+  .side-container.details {
+    width: 100%;
+  }
 }
 
 .filter-container {
@@ -116,6 +171,12 @@ ul .list-item-container button {
   position: absolute;
   transition: 0.5s;
 }
+@media screen and (max-width: 768px) {
+  ul .list-item-container button {
+    width: 100%;
+    position: relative;
+  }
+}
 ul .list-item-container button span {
   color: transparent;
   font-weight: bold;
@@ -174,6 +235,15 @@ ul .list-item-container button:hover span {
   color: #ccc;
   text-decoration: none;
 }
+.details-container .loading-container {
+  height: 100px;
+  background-position: center;
+  background-size: 30px;
+  background-color: #222;
+  background-repeat: no-repeat;
+  margin: 10px;
+  border-radius: 5px;
+}
 
 .reviews-container .rating-container {
   margin: 10px;
@@ -215,6 +285,48 @@ ul .list-item-container button:hover span {
   color: #ccc;
   display: block;
   font-weight: normal;
+}
+
+.attribution-container {
+  position: fixed;
+  z-index: 50000;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+@media screen and (max-width: 768px) {
+  .attribution-container {
+    position: relative;
+    bottom: auto;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+.attribution-container p {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ccc;
+  padding: 5px 10px;
+  height: 32px;
+  line-height: 32px;
+  display: inline;
+  border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .attribution-container p {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    line-height: 24px;
+    height: auto;
+    margin: 15px;
+  }
+}
+.attribution-container p a {
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
 }
 
 ::-webkit-scrollbar {

@@ -18,27 +18,29 @@ const MapContainer = compose(
   withGoogleMap
 )(props => 
   {
-    return <GoogleMap
-      center={props.center}
-      zoom={16}
-      ref={props.onMapMounted()}
-      defaultOptions={{ styles: myStyles, streetViewControl: false }}
-    >
-    	{props.list.map((item,index) => 
-        {
-      		return <Marker
-      		    position={item.position}
-              animation= {google.maps.Animation.DROP}
-              key={item.id}
-              options={{icon: {url: markerIcon[item.code], 
-                scaledSize: {width: 48, height: 48}}}}
-              onClick={() => {
-                props.placeSelection(index)
-              }}
-              title={item.title}
-      		/>
-        })}
-    </GoogleMap>
+    return <div className='map-container'>
+      <GoogleMap
+        center={props.center}
+        zoom={16}
+        ref={props.onMapMounted()}
+        defaultOptions={{ styles: myStyles, streetViewControl: false, mapTypeControl: false, fullscreenControl: false}}
+      >
+      	{props.list.map((item,index) => 
+          {
+        		return <Marker
+        		    position={item.position}
+                animation= {google.maps.Animation.DROP}
+                key={item.id}
+                options={{icon: {url: markerIcon[item.code], 
+                  scaledSize: {width: 48, height: 48}}}}
+                onClick={() => {
+                  props.placeSelection(index)
+                }}
+                title={item.title}
+        		/>
+          })}
+      </GoogleMap>
+    </div>
   }
 );
 

@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import fetchPlace from './ZomatoAPI'
 import back_icon from '../img/back-icon.svg'
 import stars from '../img/stars.png'
+import spinning from '../img/spinning.svg'
 
 export default class PlaceDetails extends Component{
 	constructor(props){
@@ -60,11 +61,11 @@ export default class PlaceDetails extends Component{
 						}}><span>Voltar</span></button>
 					<h2>{this.props.item.title}</h2>
 				</div>
-				{(!this.state.isGoogleLoading)?<GooglePlaceDetails data={this.state.googlePlacesData}/>:('loading')}
+				{(!this.state.isGoogleLoading)?<GooglePlaceDetails data={this.state.googlePlacesData}/>: <LoadingScreen/>}
 				{ this.state.isGoogleEmpty ? ''
-				: !this.state.isGoogleLoading ? <GooglePlacesReview data={this.state.googlePlacesData}/> : 'loading'}
+				: !this.state.isGoogleLoading ? <GooglePlacesReview data={this.state.googlePlacesData}/> : <LoadingScreen/>}
 				{ this.state.isZomatoEmpty ? ''
-				: !this.state.isZomatoLoading ? <ZomatoReview data={this.state.zomatoData}/> : 'loading'}
+				: !this.state.isZomatoLoading ? <ZomatoReview data={this.state.zomatoData}/> : <LoadingScreen/>}
 			</div>
 		)
 	}
@@ -79,7 +80,9 @@ function GooglePlaceDetails(props) {
 		adress = props.data.formatted_address
 		phone = props.data.formatted_phone_number
 		url = props.data.website
-		img = props.data.photos[0].getUrl()
+		if (props.data.photos) {
+			img = props.data.photos[0].getUrl()
+		}
 	}
 	return <div className='place-details'>
 		{img ? <div className='image-container' style={{backgroundImage : `url(${img})`}} alt='restaurant picture'/> : ''}
@@ -165,4 +168,8 @@ function ReviewContainer(props) {
 			<p><a href={data.link} target="_blank" rel="noopener noreferrer"><small>open in {data.api_url}</small></a></p>
 		</div>
 	</div>
+}
+
+function LoadingScreen(props) {
+	return <div className='loading-container' style={{backgroundImage: `url(${spinning})`}}></div>
 }
