@@ -13,6 +13,10 @@ See it in action: [click here!](https://dkotsuka.github.io/ndfe-maps-api/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## API's used in this project
+* [GoogleMaps API](https://developers.google.com/maps/documentation/javascript/tutorial)
+* [Zomato API](https://developers.zomato.com/documentation)
+
 ### Attribution
 Icons used in the project downloaded from [Flaticon](https://www.flaticon.com/) was made by [Freepik](https://www.freepik.com/) and licenced by [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).
 
