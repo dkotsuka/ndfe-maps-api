@@ -1,9 +1,9 @@
 {
-  "main.css": "/ndfe-maps-api/static/css/main.dcd26065.chunk.css",
-  "main.js": "/ndfe-maps-api/static/js/main.86e44c85.chunk.js",
-  "main.js.map": "/ndfe-maps-api/static/js/main.86e44c85.chunk.js.map",
-  "static/js/1.0569908d.chunk.js": "/ndfe-maps-api/static/js/1.0569908d.chunk.js",
-  "static/js/1.0569908d.chunk.js.map": "/ndfe-maps-api/static/js/1.0569908d.chunk.js.map",
+  "main.css": "/ndfe-maps-api/static/css/main.81b211ce.chunk.css",
+  "main.js": "/ndfe-maps-api/static/js/main.b0ffa676.chunk.js",
+  "main.js.map": "/ndfe-maps-api/static/js/main.b0ffa676.chunk.js.map",
+  "static/js/1.1bc639cd.chunk.js": "/ndfe-maps-api/static/js/1.1bc639cd.chunk.js",
+  "static/js/1.1bc639cd.chunk.js.map": "/ndfe-maps-api/static/js/1.1bc639cd.chunk.js.map",
   "runtime~main.js": "/ndfe-maps-api/static/js/runtime~main.6636c610.js",
   "runtime~main.js.map": "/ndfe-maps-api/static/js/runtime~main.6636c610.js.map",
   "static/media/flag-jp.svg": "/ndfe-maps-api/static/media/flag-jp.1f905d23.svg",
@@ -12,9 +12,10 @@
   "static/media/flag-vt.svg": "/ndfe-maps-api/static/media/flag-vt.c4f7fdb3.svg",
   "static/media/flag-cn.svg": "/ndfe-maps-api/static/media/flag-cn.7f8455b7.svg",
   "static/media/back-icon.svg": "/ndfe-maps-api/static/media/back-icon.71f65405.svg",
+  "static/media/spinning.svg": "/ndfe-maps-api/static/media/spinning.90e83534.svg",
   "static/media/flag-sk.svg": "/ndfe-maps-api/static/media/flag-sk.8a067f19.svg",
-  "static/css/main.dcd26065.chunk.css.map": "/ndfe-maps-api/static/css/main.dcd26065.chunk.css.map",
+  "static/css/main.81b211ce.chunk.css.map": "/ndfe-maps-api/static/css/main.81b211ce.chunk.css.map",
   "index.html": "/ndfe-maps-api/index.html",
-  "precache-manifest.dcb4ebf607a07edfa8003e702ce4cf8b.js": "/ndfe-maps-api/precache-manifest.dcb4ebf607a07edfa8003e702ce4cf8b.js",
+  "precache-manifest.f60d95612ad725a4bac74f528fd5e4b9.js": "/ndfe-maps-api/precache-manifest.f60d95612ad725a4bac74f528fd5e4b9.js",
   "service-worker.js": "/ndfe-maps-api/service-worker.js"
 }
