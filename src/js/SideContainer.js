@@ -42,7 +42,9 @@ function CuisineSelector(props) {
 		return (
 			<div className='filter-container'>
 				<span>Filter by cuisine:</span>
-				<select value={props.selectValue} onChange={(event) => props.onSelectCuisine(event.target.value)}>
+				<select value={props.selectValue}
+					onChange={(event) => props.onSelectCuisine(event.target.value)}
+					aria-labelledby='filter by cuisine'>
 					{cuisineList.map((item) => {
 						return <option value={item} key={item}>{item}</option>
 					})}

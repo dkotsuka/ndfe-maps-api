@@ -298,9 +298,8 @@ ul{
     margin-bottom: 10px;
     font-size: 12px;
     @media screen and (max-width: $break-mobile){
-        position: relative;
+        position: static;
         bottom: auto;
-        margin: 0;
         background-color: rgba(0,0,0,0.8);
     }
     p{
@@ -313,11 +312,10 @@ ul{
         border-radius: 5px;
         @media screen and (max-width: $break-mobile){
             background-color: transparent;
+            width: 100%;
             padding: 0;
             margin: 0;
-            line-height: 24px;
             height: auto;
-            margin: 15px;
         }
         a{
             font-weight: bold;
