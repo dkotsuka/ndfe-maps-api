@@ -11,6 +11,6 @@ const init = { method: 'GET',
 
 const fetchPlace = (item) => fetch(endPoint+item.zomatoID, init)
 	.then((response) => response.json()
-	, (err) => console.log('fail'))
+	, (err) => console.log(err))
 
 export default fetchPlace

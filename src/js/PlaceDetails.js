@@ -45,10 +45,19 @@ export default class PlaceDetails extends Component{
 		  placeId: this.props.item.id
 		};
 		this.service.getDetails(request,
-			(result) => this.setState({
-				isGoogleLoading: false,
-				googlePlacesData: result
-			}));
+			(result, status) => {
+				if (status === google.maps.places.PlacesServiceStatus.OK) {
+					this.setState({
+						isGoogleLoading: false,
+						googlePlacesData: result
+					})
+				} else {
+					this.setState({
+						isGoogleLoading: false,
+						googlePlacesData: null
+					})
+				}
+		})
 	}
 
 	render(){
@@ -101,6 +110,9 @@ function GooglePlacesReview(props) {
 		link: '',
 		rating: 0
 	}
+	if(!props.data){
+		return <div className='error-container'>Oops... Something was wrong with the fetch on Google Places API.</div>
+	}
 
 	if(props.data){
 		data.average_rating = props.data.rating
@@ -120,6 +132,9 @@ function ZomatoReview(props) {
 		price: '',
 		link: '',
 		rating: 0
+	}
+	if (!props.data) {
+		return <div className='error-container'>Oops... Something was wrong with the fetch on Zomato API.</div>
 	}
 	if(props.data.user_rating){
 		const userRating = props.data.user_rating
