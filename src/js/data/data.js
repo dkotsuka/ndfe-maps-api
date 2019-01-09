@@ -1,9 +1,9 @@
-import marker_jp from '../img/mk-jp.png'
-import marker_sk from '../img/mk-sk.png'
-import marker_cn from '../img/mk-cn.png'
-import marker_vt from '../img/mk-vt.png'
-import marker_in from '../img/mk-in.png'
-import marker_th from '../img/mk-th.png'
+import marker_jp from '../../img/mk-jp.png'
+import marker_sk from '../../img/mk-sk.png'
+import marker_cn from '../../img/mk-cn.png'
+import marker_vt from '../../img/mk-vt.png'
+import marker_in from '../../img/mk-in.png'
+import marker_th from '../../img/mk-th.png'
 
 const data = [
 	{ position: {lat: -23.5587936, lng: -46.6340618}, 

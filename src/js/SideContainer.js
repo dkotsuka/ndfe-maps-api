@@ -1,6 +1,7 @@
 import React from 'react'
 import ListItem from './ListItem'
 import PlaceDetails from './PlaceDetails'
+import CuisineSelector from './CuisineSelector'
 
 
 function SideContainer(props) {
@@ -9,7 +10,7 @@ function SideContainer(props) {
 	const isListView = !props.selected;
 
 	return (
-		<div className={`side-container ${isListView ? 'list-view' : 'details'}`}>
+		<div className={`side-container ${isListView ? 'list-view' : 'details'} ${!props.isVisible ? 'hide' : 'visible'}`}>
 			{
 				isListView ? (
 					<div>
@@ -29,28 +30,6 @@ function SideContainer(props) {
 			}
 		</div>
 	)	
-}
-
-function CuisineSelector(props) {
-		const cuisineList = ['all']
-		props.list.forEach((item) => {
-			if (!cuisineList.includes(item.cuisine)) {
-				cuisineList.push(item.cuisine)
-			}
-		});
-		cuisineList.sort()
-		return (
-			<div className='filter-container'>
-				<span id='filter'>Filter by cuisine:</span>
-				<select value={props.selectValue}
-					onChange={(event) => props.onSelectCuisine(event.target.value)}
-					aria-labelledby='filter'>
-					{cuisineList.map((item) => {
-						return <option value={item} key={item}>{item}</option>
-					})}
-				</select>
-			</div>
-		)
 }
 
 export default SideContainer

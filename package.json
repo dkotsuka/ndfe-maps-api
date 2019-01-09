@@ -13,6 +13,7 @@
     "react-async-script-loader": "^0.3.0",
     "react-dom": "^16.7.0",
     "react-google-maps": "^9.4.5",
+    "react-off-canvas-menu": "^2.0.0",
     "react-scripts": "^2.1.3",
     "recompose": "^0.30.0",
     "sass": "^1.15.2",

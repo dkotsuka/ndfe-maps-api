@@ -10,19 +10,29 @@ body,
 .main {
   height: 100%;
 }
-@media screen and (max-width: 768px) {
-  .main {
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-  }
-}
 .main .map-container {
   height: 100%;
 }
+.main .side-container {
+  position: fixed;
+}
+
 @media screen and (max-width: 768px) {
-  .main .map-container {
-    height: 400px;
+  .main.show-details {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    padding-top: 96px;
+  }
+  .main.show-details .side-container.details {
+    padding-top: 0;
+    position: static;
+    overflow-y: visible;
+  }
+  .main.show-details .side-container.details .details-header {
+    position: fixed;
+    top: 49px;
+    width: 100%;
   }
 }
 
@@ -34,11 +44,28 @@ header {
 }
 @media screen and (max-width: 768px) {
   header {
-    position: relative;
-    left: auto;
-    top: auto;
     width: 100%;
   }
+}
+header .toggleBtn {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  header .toggleBtn {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    float: left;
+    margin: 4px;
+  }
+}
+header .toggleBtn.hide {
+  display: none;
 }
 header h1 {
   height: 50px;
@@ -65,7 +92,6 @@ header h1 span {
 }
 
 .side-container {
-  position: fixed;
   padding-top: 50px;
   top: 0;
   bottom: 0;
@@ -73,25 +99,23 @@ header h1 span {
   overflow-y: scroll;
   z-index: 10000;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.side-container.list-view.visible, .side-container.list-view {
+  width: 320px;
   transition: 0.5s;
 }
 @media screen and (max-width: 768px) {
-  .side-container {
-    position: relative;
-    overflow-y: visible;
-    top: auto;
-    left: auto;
-    bottom: auto;
-    padding-top: 0;
+  .side-container.list-view.visible, .side-container.list-view {
+    width: 100%;
+    left: 0px;
   }
 }
 
-.side-container.list-view {
-  width: 320px;
-}
 @media screen and (max-width: 768px) {
-  .side-container.list-view {
-    width: 100%;
+  .side-container.list-view.hide {
+    left: -50px;
+    width: 40px;
   }
 }
 
@@ -101,6 +125,7 @@ header h1 span {
 @media screen and (max-width: 768px) {
   .side-container.details {
     width: 100%;
+    left: 0px;
   }
 }
 
@@ -214,6 +239,11 @@ ul .list-item-container button:hover span {
   margin: 0;
   padding-left: 15px;
 }
+@media screen and (max-width: 768px) {
+  .details-container .details-header h2 {
+    font-size: 1rem;
+  }
+}
 .details-container .place-details {
   background-color: rgba(0, 0, 0, 0.8);
   padding-bottom: 15px;
@@ -226,6 +256,11 @@ ul .list-item-container button:hover span {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+@media screen and (max-width: 768px) {
+  .details-container .place-details .image-container {
+    height: 200px;
+  }
 }
 .details-container .place-details p {
   color: white;
@@ -277,6 +312,11 @@ ul .list-item-container button:hover span {
   margin: 0;
   margin-top: -30px;
 }
+@media screen and (max-width: 768px) {
+  .reviews-container .rating-container h3 {
+    font-size: 1.2rem;
+  }
+}
 .reviews-container .rating-container p {
   margin: 0;
   color: #eee;
@@ -292,46 +332,6 @@ ul .list-item-container button:hover span {
   color: #ccc;
   display: block;
   font-weight: normal;
-}
-
-.attribution-container {
-  position: fixed;
-  z-index: 50000;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 12px;
-}
-@media screen and (max-width: 768px) {
-  .attribution-container {
-    position: static;
-    bottom: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-}
-.attribution-container p {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #ccc;
-  padding: 5px 10px;
-  height: 32px;
-  line-height: 32px;
-  display: inline;
-  border-radius: 5px;
-}
-@media screen and (max-width: 768px) {
-  .attribution-container p {
-    background-color: transparent;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    height: auto;
-  }
-}
-.attribution-container p a {
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
 }
 
 ::-webkit-scrollbar {

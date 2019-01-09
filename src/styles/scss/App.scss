@@ -10,17 +10,34 @@ body,
 }
 .main{
     height: 100%;
+    .map-container {
+        height: 100%;
+    }
+    .side-container {
+        position: fixed;
+    }
+    
+}
+
+.main.show-details{
     @media screen and (max-width: $break-mobile){
         display: flex;
         flex-direction: column;
-        height: 400px;
-    }
-    .map-container {
-        height: 100%;
-        @media screen and (max-width: $break-mobile){
-            height: 400px;
+        height: 300px;
+        padding-top: 96px;
+        .side-container.details{
+            padding-top: 0;
+            position: static;
+            overflow-y: visible;
+
+            .details-header{
+                position: fixed;
+                top: 49px;
+                width: 100%;
+            }
         }
     }
+
 }
 
 
@@ -30,10 +47,26 @@ header{
     top: 0;
     z-index: 20000;
     @media screen and (max-width: $break-mobile){
-        position: relative;
-        left: auto;
-        top: auto;
         width: 100%;
+    }
+
+    .toggleBtn{
+        display: none;
+        @media screen and (max-width: $break-mobile){
+            display: flex;
+            width: 40px;
+            height: 40px;
+            background-size: 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: none;
+            background-color: transparent;
+            float: left;
+            margin: 4px;
+        }
+    }
+    .toggleBtn.hide{
+        display: none;
     }
 
     h1{
@@ -61,7 +94,6 @@ header{
 }
 
 .side-container {
-    position: fixed;
     padding-top: 50px;
     top: 0;
     bottom: 0;
@@ -69,26 +101,29 @@ header{
     overflow-y: scroll;
     z-index: 10000;
     background-color: rgba(0,0,0,0.5);
+    
+}
+.side-container.list-view.visible, .side-container.list-view{
+    width: 320px;
     transition: 0.5s;
     @media screen and (max-width: $break-mobile){
-        position: relative;
-        overflow-y: visible;
-        top: auto;
-        left: auto;
-        bottom: auto;
-        padding-top: 0;
+        width: 100%;
+        left: 0px;
     }
 }
-.side-container.list-view{
-    width: 320px;
+
+.side-container.list-view.hide{
     @media screen and (max-width: $break-mobile){
-        width: 100%;
+        left: -50px;
+        width: 40px;
     }
+    
 }
 .side-container.details{
     width: 400px;
     @media screen and (max-width: $break-mobile){
         width: 100%;
+        left: 0px;
     }
 }
 
@@ -189,6 +224,7 @@ ul{
         height: 48px;
         background-color: rgb(100,0,0);
 
+
         button{
             width: 48px;
             background-color: rgb(80,0,0);
@@ -209,6 +245,9 @@ ul{
             color: white;
             margin: 0;
             padding-left: 15px;
+            @media screen and (max-width: $break-mobile){
+                font-size: 1rem;
+            }
         }
     }
     .place-details{
@@ -222,6 +261,9 @@ ul{
             background-position:center;
             background-repeat: no-repeat;
             background-size: cover;
+            @media screen and (max-width: $break-mobile){
+                height: 200px;
+            }
         }
         p{
             color: white;
@@ -276,6 +318,9 @@ ul{
             font-size: 24px;
             margin: 0;
             margin-top: -30px;
+            @media screen and (max-width: $break-mobile){
+                font-size: 1.2rem;
+            }
         }
         p{
             margin: 0;
@@ -292,42 +337,6 @@ ul{
                 display: block;
                 font-weight: normal;
             }
-        }
-    }
-}
-
-.attribution-container{
-    position: fixed;
-    z-index: 50000;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 12px;
-    @media screen and (max-width: $break-mobile){
-        position: static;
-        bottom: auto;
-        background-color: rgba(0,0,0,0.8);
-    }
-    p{
-        background-color: rgba(0,0,0,0.8);
-        color: #ccc;
-        padding: 5px 10px;
-        height: 32px;
-        line-height: 32px;
-        display: inline;
-        border-radius: 5px;
-        @media screen and (max-width: $break-mobile){
-            background-color: transparent;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            height: auto;
-        }
-        a{
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
         }
     }
 }

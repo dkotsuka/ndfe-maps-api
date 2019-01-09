@@ -11,6 +11,8 @@ See it in action: [click here!](https://dkotsuka.github.io/ndfe-maps-api/)
 * then `npm start` to run server
 * and open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+* ServiceWorker only runs in production mode. If you want to see in action run `npm run build` and serve it locally or deploy it in some https server.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## API's used in this project
