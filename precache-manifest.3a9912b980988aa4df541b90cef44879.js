@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/ndfe-maps-api/static/media/flag-th.683af0c3.svg"
   },
   {
-    "revision": "db61eae77f5be8e3451d",
+    "revision": "8988298a0ec35e50dfe6",
     "url": "/ndfe-maps-api/static/css/main.cfcc99fb.chunk.css"
   },
   {
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "/ndfe-maps-api/static/media/flag-in.9ec8b782.svg"
   },
   {
-    "revision": "db61eae77f5be8e3451d",
-    "url": "/ndfe-maps-api/static/js/main.db61eae7.chunk.js"
+    "revision": "8988298a0ec35e50dfe6",
+    "url": "/ndfe-maps-api/static/js/main.8988298a.chunk.js"
   },
   {
     "revision": "c4f7fdb3afc07ee3504d1144456fe514",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/ndfe-maps-api/static/media/list.99646fab.svg"
   },
   {
-    "revision": "b0ae95082d11fa8340afa1b85ec969c0",
+    "revision": "b16a15ca875346d3df3b4357ac0462ea",
     "url": "/ndfe-maps-api/index.html"
   }
 ];
