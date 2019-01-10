@@ -279,7 +279,8 @@ ul .list-item-container button:hover span {
   margin: 10px;
   border-radius: 5px;
 }
-.details-container .error-container {
+
+.error-container {
   background-color: red;
   margin: 10px;
   border-radius: 5px;

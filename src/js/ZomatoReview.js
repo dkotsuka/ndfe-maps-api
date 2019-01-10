@@ -1,5 +1,6 @@
 import React from 'react'
 import ReviewContainer from './ReviewContainer'
+import ErrorContainer from './ErrorContainer'
 
 function ZomatoReview(props) {
 	const data = {
@@ -8,22 +9,24 @@ function ZomatoReview(props) {
 		average_rating: '',
 		price: '',
 		link: '',
-		rating: 0
+		rating: 0,
 	}
 	if (!props.data) {
-		throw new Error('error with Zomato API request')
+		return <ErrorContainer name='Zomato' />
+	} else {
+		if(props.data.user_rating){
+			const userRating = props.data.user_rating
+			data.average_rating = userRating.aggregate_rating
+			data.rating = Math.floor((parseFloat(data.average_rating) / 5) * 100)
+		}
+		if (props.data.url) {
+			data.link = props.data.url
+		}
+		if (props.data.price_range){
+			data.price = props.data.price_range
+		}
 	}
-	if(props.data.user_rating){
-		const userRating = props.data.user_rating
-		data.average_rating = userRating.aggregate_rating
-		data.rating = Math.floor((parseFloat(data.average_rating) / 5) * 100)
-	}
-	if (props.data.url) {
-		data.link = props.data.url
-	}
-	if (props.data.price_range){
-		data.price = props.data.price_range
-	}
+	
 	return <ReviewContainer data={data}/>
 }
 

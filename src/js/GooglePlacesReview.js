@@ -1,5 +1,6 @@
 import React from 'react'
 import ReviewContainer from './ReviewContainer'
+import ErrorContainer from './ErrorContainer'
 
 function GooglePlacesReview(props) {
 	const data = {
@@ -11,7 +12,7 @@ function GooglePlacesReview(props) {
 		rating: 0
 	}
 	if(!props.data){
-		throw new Error('error with GooglePlaces API request')
+		return <ErrorContainer name='GooglePlaces' />
 	}
 
 	if(props.data){

@@ -4,6 +4,7 @@ import MapContainer from './js/MapContainer'
 import SideContainer from './js/SideContainer'
 import list, {getCenter} from './js/data/data'
 import listicon from './img/list.svg'
+import MapErrorBoundary from './js/MapErrorBoundary'
 
 class App extends Component {
 	constructor(props){
@@ -59,10 +60,13 @@ class App extends Component {
 	}
 
 	setMapCenter = (position) => {
-		this.map.panTo(position)
-		if (window.innerWidth >= 769){
-			this.map.panBy(-160,0)
+		if(this.map){
+			this.map.panTo(position)
+			if (window.innerWidth >= 769){
+				this.map.panBy(-160,0)
+			}
 		}
+		
 	}
 	toggleVisibility = () => {
 		if (this.state.isSideVisible){
@@ -84,13 +88,13 @@ class App extends Component {
 				</header>
 
 				<div className={`main ${this.state.isDetailsVisible ? 'show-details' : 'only-map'}`}>
-
-					<MapContainer list={this.state.showList} 
-							isDetailsVisible={this.state.isDetailsVisible}
-							center={getCenter} 
-							placeSelection={this.handlePlaceSelection}
-							onMapMounted = {this.onMapMounted}/>
-
+					<MapErrorBoundary>
+						<MapContainer list={this.state.showList} 
+								isDetailsVisible={this.state.isDetailsVisible}
+								center={getCenter} 
+								placeSelection={this.handlePlaceSelection}
+								onMapMounted = {this.onMapMounted}/>
+					</MapErrorBoundary>
 					<SideContainer list={list}
 							isVisible={this.state.isSideVisible}
 							map={this.map}
@@ -100,7 +104,6 @@ class App extends Component {
 							onSelectCuisine={this.filterByCuisine}
 							onBackToList={this.showListAgain}
 							onItemClick={this.handlePlaceSelection}/>
-
 				</div>
 			</div>
 		);

@@ -2,7 +2,6 @@
 import React, {Component} from 'react'
 import fetchPlace from './API/ZomatoAPI'
 import back_icon from '../img/back-icon.svg'
-import ErrorBoundary from './ErrorBoundary'
 import ZomatoReview from './ZomatoReview'
 import GooglePlaceDetails from './GooglePlaceDetails'
 import GooglePlacesReview from './GooglePlacesReview'
@@ -43,6 +42,9 @@ export default class PlaceDetails extends Component{
 	}
 
 	loadGooglePlacesData(){
+		if(!window.google){
+			return {}
+		}
 		const map = new google.maps.Map(document.createElement('div'), {})
 		this.service = new google.maps.places.PlacesService(map);
 		var request = {
@@ -74,11 +76,17 @@ export default class PlaceDetails extends Component{
 						}}><span>Voltar</span></button>
 					<h2>{this.props.item.title}</h2>
 				</div>
-				{(!this.state.isGoogleLoading)? (<ErrorBoundary><GooglePlaceDetails data={this.state.googlePlacesData}/></ErrorBoundary>) : <LoadingScreen/>}
+				{(!this.state.isGoogleLoading)? 
+					<GooglePlaceDetails data={this.state.googlePlacesData}/>
+					: <LoadingScreen/>}
 				{ this.state.isGoogleEmpty ? ''
-				: !this.state.isGoogleLoading ? (<ErrorBoundary><GooglePlacesReview data={this.state.googlePlacesData}/></ErrorBoundary>) : <LoadingScreen/>}
+					: !this.state.isGoogleLoading ? 
+						<GooglePlacesReview data={this.state.googlePlacesData}/>
+						: <LoadingScreen/>}
 				{ this.state.isZomatoEmpty ? ''
-				: !this.state.isZomatoLoading ? (<ErrorBoundary><ZomatoReview data={this.state.zomatoData}/></ErrorBoundary>) : <LoadingScreen/>}
+					: !this.state.isZomatoLoading ? 
+						<ZomatoReview data={this.state.zomatoData}/>
+						: <LoadingScreen/>}
 			</div>
 		)
 	}

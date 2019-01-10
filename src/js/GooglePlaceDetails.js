@@ -1,4 +1,5 @@
 import React from 'react'
+import ErrorContainer from './ErrorContainer'
 
 function GooglePlaceDetails(props) {
 	let adress
@@ -13,7 +14,7 @@ function GooglePlaceDetails(props) {
 			img = props.data.photos[0].getUrl()
 		}
 	} else {
-		throw new Error('error with GooglePlaces API request')
+		return <ErrorContainer name='GooglePlaces' />
 	}
 	return <div className='place-details'>
 		{img ? <div className='image-container' style={{backgroundImage : `url(${img})`}} alt='restaurant picture'/> : ''}

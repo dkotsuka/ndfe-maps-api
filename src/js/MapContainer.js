@@ -3,10 +3,12 @@ import React from 'react'
 import { compose, withProps} from 'recompose'
 import {markerIcon} from './data/data'
 import mapStyles from './data/mapStyles'
+
 const { withScriptjs, withGoogleMap, GoogleMap, Marker } = require("react-google-maps");
 
 
 const myStyles = mapStyles;
+
 const MapContainer = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAuSYjXbRFN8jkYW6S1lv6ptf2rGxw92q4&v=3.exp&libraries=geometry,drawing,places",
@@ -17,7 +19,7 @@ const MapContainer = compose(
   withScriptjs,
   withGoogleMap
 )(props => 
-  {
+  { 
     return <div className={`map-container ${props.isDetailsVisible ? 'details' : 'only-map'}`}>
         <GoogleMap
           center={props.center}
